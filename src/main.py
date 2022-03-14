@@ -1,5 +1,4 @@
 import scprep as sc
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
