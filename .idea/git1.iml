@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (git1)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (myFirstGit)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
