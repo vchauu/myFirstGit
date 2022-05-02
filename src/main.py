@@ -8,9 +8,24 @@ replicate = ['one', 'two', 'three', 'four']
 cortex = read_input("Cortex", group, replicate)
 striatum = read_input("Striatum", group, replicate)
 
-##
 # Set the groups and their colors
 colors = ['r', 'g', 'b', 'darkgoldenrod']
+
+##
+# Obtain regression calculations
+plsr_cor = do_plsda(cortex, 9, len(group), len(replicate))[0]
+plsr_stri = do_plsda(striatum, 9, len(group), len(replicate))[0]
+
+scores_cor = pd.DataFrame(plsr_cor.x_scores_)
+scores_cor.index = cortex.columns
+
+scores_stri = pd.DataFrame(plsr_stri.x_scores_)
+scores_stri.index = striatum.columns
+
+##
+# Plot PLS-DA graphs
+plsda_stri = plot_scores("Striatum", scores_stri, group, colors, 'plsda', 1, 2)
+plsda_cor = plot_scores("Cortex", scores_cor, group, colors, 'plsda', 1, 2)
 
 ##
 # Do PCA
@@ -23,8 +38,8 @@ pca_stri = pca_stri_full[0]
 # Plot PCA plots
 pc_df_cor = pca_cor_full[1]
 pc_df_stri = pca_stri_full[1]
-plot_scores("Striatum", pc_df_stri, group, colors, 'pca', 1, 2)
-plot_scores("Cortex", pc_df_cor, group, colors, 'pca', 1, 2)
+pca_stri_plot = plot_scores("Striatum", pc_df_stri, group, colors, 'pca', 1, 2)
+pca_cor_plot = plot_scores("Cortex", pc_df_cor, group, colors, 'pca', 1, 2)
 
 ##
 # Plot variance explained by PCs
@@ -104,18 +119,3 @@ hm_blood_plot.savefig("results/blood_proteins_striatum.png")
 # Get loadings rankings of the identified genes
 rankings = loadings_stri.loc[ilmn_ids, :].sort_values(by='Ranking')
 rankings.loc[:, ('gene_name', 'Ranking')].to_csv("results/deg_rankings.csv")
-##
-# Obtain regression calculations
-plsr_cor = do_plsda(cortex, 9, len(group), len(replicate))[0]
-plsr_stri = do_plsda(striatum, 9, len(group), len(replicate))[0]
-
-scores_cor = pd.DataFrame(plsr_cor.x_scores_)
-scores_cor.index = cortex.columns
-
-scores_stri = pd.DataFrame(plsr_stri.x_scores_)
-scores_stri.index = striatum.columns
-
-##
-# Plot PLS-DA graphs
-plot_scores("Striatum", scores_stri, group, colors, 'plsda', 1, 2)
-plot_scores("Cortex", scores_cor, group, colors, 'plsda', 1, 2)

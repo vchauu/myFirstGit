@@ -82,7 +82,7 @@ def do_plsda(df, n_pc, n_groups, n_samples):
 # analysis: string, the name of analysis performed
 # ax1: int, which PC or LV on the x-axis
 # ax2: int, which PC or LV on the y-axis
-# Output: a scatter plot, returns None
+# Output: a scatter plot
 # Assumptions for inputs:
 # name is a string
 # scores is a DataFrame generated from PLS-DA analysis
@@ -110,7 +110,7 @@ def plot_scores(name, scores, targets, colors, analysis, ax1, ax2):
                    )
     ax.legend(targets)
     plt.show()
-    return
+    return fig
 
 
 ##
