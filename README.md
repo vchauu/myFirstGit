@@ -24,6 +24,10 @@ These analyses will be performed on raw microarray transcriptomic profiling of i
 We used mouse ischemic stroke expression profiles (GEO database) for the cortex and striatum to identify correlatory biomarkers associated stroke severity. These files can be found in the _data/I_R_txt_ directory. 
 Each contain normalized gene expression counts of 16 striatum and cortex samples of 4 different experimental groups (controls, 2 h after stroke, 8 h after stroke, and 24 h after stroke). The expressions of 25,967 genes of each sample are stored in one separate \*.txt file.
 
+#### The Human Protein Atlas dataset
+This dataset contains a subset of the data in the Human Protein Atlas version 21.0 corresponding to the data seen in the search result returned by The Human Protein Atlas. This dataset contains protein names and their concentrations in blood (among other interesting characteristics). This dataset will be referenced to filter for genes encoding blood-circulating proteins.
+
+
 ## II. Installation
 ### Folder structure
 This repo is divided into three directories: _src_, _data_, and _results_.
